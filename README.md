@@ -4,6 +4,8 @@ You can transform from cubemap to latlong (also know as equirectangular), and vi
 
 ![reproject](data/reproject.png)
 
+It uses OpenGL 3.3.
+
 ### Download the executable
 
 ### Usage
