@@ -29,4 +29,16 @@ This project uses [stb](https://github.com/nothings/stb) for loading and saving 
 - [Formats you can load](https://github.com/tuket/reproject/blob/e1550e9a591ef4e679c74727c86f45fa73a90a08/libs/stb/stb_image.h#L19)
 - [Formats you can save](https://github.com/tuket/reproject/blob/e1550e9a591ef4e679c74727c86f45fa73a90a08/libs/stb/stb_image_write.h#L45)
 
+### Compiling
 
+This compiles like any normal CMake project.
+
+This is how you can compile in Linux:
+
+```
+cd reproject
+mkdir build
+cd build
+cmake ..
+ninja
+```
