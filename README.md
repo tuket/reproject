@@ -9,7 +9,7 @@ You can transform from cubemap to latlong (also know as equirectangular), and vi
 
 ## Usage
 
-There two king of commands:
+There are 2 kinds of command:
 ```
 reproject latlongToCubemap <inputFile> <outputFile> <outputFaceResolution> [numSamples]
 reproject cubemapToLatlong <inputFile> <outputFile> <outputWidth>x<outputHeight> [numSamples]
