@@ -13,13 +13,13 @@ static constexpr T nextPowerOf2(T x) noexcept
     x |= x >> T(1);
     x |= x >> T(2);
     x |= x >> T(4);
-    if (sizeof(T) >= 2)
+    if constexpr(sizeof(T) >= 2)
         x |= x >> T(8);
-    if (sizeof(T) >= 4)
+    if constexpr(sizeof(T) >= 4)
         x |= x >> T(16);
-    if (sizeof(T) >= 8)
+    if constexpr(sizeof(T) >= 8)
         x |= x >> T(32);
-    if (sizeof(T) >= 16)
+    if constexpr(sizeof(T) >= 16)
         x |= x >> T(64);
     x++;
     return x;
