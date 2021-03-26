@@ -261,7 +261,7 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    if(strcmpi(argv[1], "latlongToCubemap") == 0)
+    if(strcmp_ci(argv[1], "latlongToCubemap") == 0)
     {
         const char* inFilePath = argv[2];
         const char* outFilePath = argv[3];
@@ -284,7 +284,7 @@ int main(int argc, char** argv)
 
         command_latlongToCubemap(inFilePath, outFilePath, faceSize, numSamples);
     }
-    else if(strcmpi(argv[1], "cubemapToLatlong") == 0)
+    else if(strcmp_ci(argv[1], "cubemapToLatlong") == 0)
     {
         const char* inFilePath = argv[2];
         const char* outFilePath = argv[3];

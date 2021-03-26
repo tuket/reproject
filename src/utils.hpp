@@ -33,7 +33,7 @@ u32 makeShader(const char* src, u32 type);
 u32 makeProgram(const char* vertSrc, const char* fragSrc);
 u32 makeProgram(u32 vertShad, const char* fragSrc);
 
-inline int strcmpi(const char* a, const char* b) {
+inline int strcmp_ci(const char* a, const char* b) {
     while(*a || *b) {
         if(*a < *b)
             return -1;
