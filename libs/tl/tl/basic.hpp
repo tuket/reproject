@@ -19,22 +19,16 @@ void swap(T& a, T& b)
     b = move(x);
 }
 
-template <typename T, typename... Ts>
-constexpr auto min(T a, T b, Ts... tail) noexcept
+template <typename T>
+constexpr auto min(T a, T b) noexcept
 {
-    if constexpr (sizeof...(tail) == 0)
-        return a < b ? a : b;
-    else
-        return min<T>(min(a, b), tail...);
+    return a < b ? a : b;
 }
 
-template <typename T, typename... Ts>
-constexpr auto max(T a, T b, Ts... tail) noexcept
+template <typename T>
+constexpr auto max(T a, T b) noexcept
 {
-    if constexpr (sizeof...(tail) == 0)
-        return a > b ? a : b;
-    else
-        return max<T>(max(a, b), tail...);
+    return a > b ? a : b;
 }
 
 template <typename T>

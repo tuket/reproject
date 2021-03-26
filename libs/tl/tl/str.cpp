@@ -110,7 +110,7 @@ StrT<CharT>::StrT(const CharT* begin, const CharT* end)
 
 template<typename CharT>
 StrT<CharT>::StrT(const CharT* cstr)
-    : StrT(CStrT(cstr))
+    : StrT(CStrT<CharT>(cstr))
 {}
 
 template<typename CharT>
