@@ -17,7 +17,7 @@ reproject latlongToCubemap <inputFile> <outputFile> <outputFaceResolution> [numS
 reproject cubemapToLatlong <inputFile> <outputFile> <outputWidth>x<outputHeight> [numSamples]
 ```
 
-The number of samples is optional. The more the better quality (at the expense of more computation cost). The default value is 128, which is usually more that enough.
+The number of samples is optional. The more, the better quality (at the expense of more computation cost). The default value is 128, which is usually more that enough.
 
 Examples:
 
