@@ -50,3 +50,6 @@ You might need to install some of these libraries:
 ```
 sudo apt install libx11-dev libxi-dev libxcursor-dev libxinerama-dev libxrandr-dev libopengl-dev
 ```
+
+### License
+[MIT](LICENSE.txt)
