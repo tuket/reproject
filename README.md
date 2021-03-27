@@ -7,6 +7,7 @@ You can transform from cubemap to latlong (also know as equirectangular), and vi
 It uses OpenGL 3.3.
 
 ### Download the executable
+You can [download](https://github.com/tuket/reproject/releases) the tool as a single executable (Linux and Windows).
 
 ### Usage
 
