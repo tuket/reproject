@@ -31,7 +31,7 @@ uniform float u_invFaceSize;
 
 vec2 transformTc(vec2 tc)
 {
-    vec3 ray = u_rayMtx * vec3(2*tc - 1, -1);
+    vec3 ray = u_rayMtx * vec3(2*tc - 1, +1);
     float r = length(ray.xz);
     float phi = atan(ray.x, ray.z);
     if(phi < 0)
@@ -188,18 +188,18 @@ void latlongToCubemap(
     glUniform1f(latlongToCubemapShad.locs.invFaceSize, 1.f / faceSize);
 
     static const mat3 rayMatrices[] = {
-        {{0, 0, -1}, {0, +1, 0}, {+1, 0, 0}}, // left
         {{0, 0, +1}, {0, +1, 0}, {-1, 0, 0}}, // right
-        {{+1, 0, 0}, {0, 0, -1}, {0, +1, 0}}, // down
+        {{0, 0, -1}, {0, +1, 0}, {+1, 0, 0}}, // left
         {{+1, 0, 0}, {0, 0, +1}, {0, -1, 0}}, // up
-        {{+1, 0, 0}, {0, +1, 0}, {0, 0, +1}}, // front
-        {{-1, 0, 0}, {0, +1, 0}, {0, 0, -1}}, // back
+        {{+1, 0, 0}, {0, 0, -1}, {0, +1, 0}}, // down
+        {{+1, 0, 0}, {0, +1, 0}, {0, 0, -1}}, // front
+        {{-1, 0, 0}, {0, +1, 0}, {0, 0, +1}}, // back
     };
     const ivec2 texRegions[] = {
-        {0, faceSize}, // left
         {2*faceSize, outTexFaceSize}, // right
-        {faceSize, 0}, // down
+        {0, faceSize}, // left
         {faceSize, 2*faceSize}, // up
+        {faceSize, 0}, // down
         {faceSize, faceSize}, // front
         {3*faceSize, faceSize}, // back
     };
