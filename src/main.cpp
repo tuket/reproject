@@ -202,7 +202,7 @@ void command_cubemapToLatlong(const char* inFilePath, const char* outFilePath, i
 void demo_proj();
 void demo_latlongToCubemap();
 
-void printHelp()
+void printUsageHelp()
 {
     printf(
         "Usage:\n"
@@ -255,9 +255,15 @@ int main(int argc, char** argv)
 
     glfwHideWindow(g_window);
 
+    if (argc == 1) {
+        printf("reproject version 1.1\n");
+        printUsageHelp();
+        return -1;
+    }
+
     if(argc != 5 && argc != 6) {
         printf("Invalid number of params\n");
-        printHelp();
+        printUsageHelp();
         return -1;
     }
 
@@ -269,7 +275,7 @@ int main(int argc, char** argv)
         int faceSize;
         if(!toInt(faceSize, argv[4]) || faceSize == 0) {
             printf("The 'outputFaceResolution' parameter must be a positive integer\n");
-            printHelp();
+            printUsageHelp();
             return -1;
         }
 
@@ -277,7 +283,7 @@ int main(int argc, char** argv)
         if(argc == 6) {
             if(!toInt(numSamples, argv[5])) {
                 printf("The 'numSamples' parameter must be an interger\n");
-                printHelp();
+                printUsageHelp();
                 return -1;
             }
         }
@@ -292,7 +298,7 @@ int main(int argc, char** argv)
         uvec2 outTexSize;
         if(!parseResolution(outTexSize, argv[4])) {
             printf("Wrong format for output resolution\n");
-            printHelp();
+            printUsageHelp();
             return -1;
         }
         
@@ -300,7 +306,7 @@ int main(int argc, char** argv)
         if(argc == 6) {
             if(!toInt(numSamples, argv[5])) {
                 printf("The 'numSamples' parameter must be an interger\n");
-                printHelp();
+                printUsageHelp();
                 return -1;
             }
         }
@@ -309,7 +315,7 @@ int main(int argc, char** argv)
     }
     else {
         printf("Invalid command\n");
-        printHelp();
+        printUsageHelp();
     }
 
     //glfwSwapBuffers(g_window); // uncomment in order to be able to debug with renderdoc
