@@ -33,9 +33,7 @@ vec2 transformTc(vec2 tc)
 {
     vec3 ray = u_rayMtx * vec3(2*tc - 1, +1);
     float r = length(ray.xz);
-    float phi = atan(ray.x, ray.z);
-    if(phi < 0)
-        phi += 2*PI;
+    float phi = mod(2*PI - atan(ray.x, ray.z), 2*PI);
     float theta = atan(ray.y, r);
     return vec2(
         phi * 0.5 * INV_PI,
@@ -188,17 +186,17 @@ void latlongToCubemap(
     glUniform1f(latlongToCubemapShad.locs.invFaceSize, 1.f / faceSize);
 
     static const mat3 rayMatrices[] = {
-        {{0, 0, +1}, {0, +1, 0}, {-1, 0, 0}}, // right
-        {{0, 0, -1}, {0, +1, 0}, {+1, 0, 0}}, // left
-        {{+1, 0, 0}, {0, 0, +1}, {0, -1, 0}}, // up
-        {{+1, 0, 0}, {0, 0, -1}, {0, +1, 0}}, // down
+        {{0, 0, +1}, {0, +1, 0}, {+1, 0, 0}}, // right
+        {{0, 0, -1}, {0, +1, 0}, {-1, 0, 0}}, // left
+        {{+1, 0, 0}, {0, 0, +1}, {0, +1, 0}}, // up
+        {{+1, 0, 0}, {0, 0, -1}, {0, -1, 0}}, // down
         {{+1, 0, 0}, {0, +1, 0}, {0, 0, -1}}, // front
         {{-1, 0, 0}, {0, +1, 0}, {0, 0, +1}}, // back
     };
     const ivec2 texRegions[] = {
-        {2*faceSize, outTexFaceSize}, // right
+        {2*faceSize, faceSize}, // right
         {0, faceSize}, // left
-        {faceSize, 2*faceSize}, // up
+        {faceSize, 2*faceSize}, // down
         {faceSize, 0}, // down
         {faceSize, faceSize}, // front
         {3*faceSize, faceSize}, // back
@@ -209,7 +207,8 @@ void latlongToCubemap(
     glClearColor(0,0,0,0);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    for(int f = 0; f < 6; f++) {
+    for (int f = 0; f < 6; f++)
+    {
         const int rx = texRegions[f].x;
         const int ry = texRegions[f].y;
         glViewport(rx, ry, faceSize, faceSize);
@@ -219,7 +218,6 @@ void latlongToCubemap(
 
         glDrawArrays(GL_TRIANGLES, 0, 3);
     }
-
 }
 
 void cubemapToLatlong(

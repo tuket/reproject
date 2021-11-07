@@ -199,9 +199,6 @@ void command_cubemapToLatlong(const char* inFilePath, const char* outFilePath, i
     saveImageBoundTex(outFilePath, outTexSize.x, outTexSize.y, nc, format, outData);
 }
 
-void demo_proj();
-void demo_latlongToCubemap();
-
 void printUsageHelp()
 {
     printf(
